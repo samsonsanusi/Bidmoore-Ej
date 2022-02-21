@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Object Sans";
+    src: url("../font/ObjectSans-Regular.otf") format("otf2");
+}
+@font-face {
+    font-family: "ObjectSans-HeavySlanted";
+    src: url("../font/ObjectSans-HeavySlanted.otf") format("otf2");
+}
+@font-face {
+    font-family: "ObjectSans-Slanted";
+    src: url("../font/ObjectSans-Slanted.otf") format("otf2");
+}
