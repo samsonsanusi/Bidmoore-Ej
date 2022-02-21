@@ -47,10 +47,13 @@ function Login() {
                     </div>
                 </div>
                 <div>
-                    <p>
-                        Don't have an account?<span>Sign Up</span>
+                    <p className="login--signUp">
+                        Don't have an account?
+                        <span className="login__signUp">Sign Up</span>
                     </p>
-                    <h6>Forgot your Password?</h6>
+                    <h6 className="login--forgotPassword">
+                        Forgot your Password?
+                    </h6>
                 </div>
             </div>
         </div>
