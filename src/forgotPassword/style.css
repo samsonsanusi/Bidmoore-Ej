@@ -1,0 +1,76 @@
+.forgotPassword--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.forgotPassword-formBg {
+    background: #ffffff;
+    width: 440px;
+    height: 326px;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+.forgotPassword_text {
+    font-family: sans-serif;
+    color: #5600e8;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 32px;
+}
+.forgotPassword_formHolder {
+    display: flex;
+    justify-content: center;
+}
+.forgotPassword_label {
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #3a3a3a;
+    line-height: 15.37px;
+}
+.forgotPassword-numberInput {
+    margin-top: 21px;
+}
+.forgotPassowrd_reset {
+    margin-top: 21px;
+}
+.forgotPassword_userNameLabel {
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #3a3a3a;
+    line-height: 15.37px;
+}
+.forgotPassword_phone {
+    border-radius: 3px;
+    border: 1px solid #00000038;
+    padding: 10px 210px 10px 2px;
+    margin-top: 4px;
+}
+.forgotPassword_username {
+    border-radius: 3px;
+    border: 1px solid #00000038;
+    padding: 10px 210px 10px 2px;
+    margin-top: 4px;
+}
+.forgotPasswordBtn {
+    background: #e85500;
+    color: #ffffff;
+    padding: 10px 120px 10px 120px;
+    border: none;
+    border-radius: 3px;
+}
+.forgotPasswordBtn:hover {
+    background: #e85500d9;
+}
+
+.forgotPassword_reset {
+    font-family: sans-serif;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 14px;
+}
+.forgotPassword_signUP {
+    font-weight: 800;
+    margin-left: 2px;
+}
