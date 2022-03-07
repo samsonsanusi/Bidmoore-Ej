@@ -2,9 +2,8 @@ import "./App.css";
 import Login from "./login";
 import ForgotPassword from "./forgotPassword";
 import SignUp from "./signUp";
-import Dashboard from "./dashboardCustomer";
+import DashboardProducts from "./dashboardProducts";
 import { Routes, Route } from "react-router-dom";
-import DashboardCustomer from "./dashboardCustomer";
 
 function App() {
     return (
@@ -14,8 +13,8 @@ function App() {
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
                 <Route path="signUp" element={<SignUp />} />
                 <Route
-                    path="dashboardCustomer"
-                    element={<DashboardCustomer />}
+                    path="dashboardProducts"
+                    element={<DashboardProducts />}
                 ></Route>
             </Routes>
         </div>

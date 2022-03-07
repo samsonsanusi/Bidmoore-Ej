@@ -13,6 +13,9 @@
     src: url("../font/ObjectSans-Slanted.otf");
 }
 
+html {
+    font-size: 16px;
+}
 body {
     font-family: "object-sans", sans-serif;
 }
