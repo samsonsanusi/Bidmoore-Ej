@@ -167,7 +167,7 @@ function DashboardProducts() {
                                     FILTER BY
                                 </p>
                                 <div className="DashboardCustomerCard__input">
-                                    <div>
+                                    <div className="groupedData2">
                                         <label
                                             htmlFor="porductName"
                                             className="inputLabel"
@@ -182,7 +182,7 @@ function DashboardProducts() {
                                         />
                                     </div>
                                     <br />
-                                    <div>
+                                    <div className="groupedData">
                                         <label
                                             htmlFor="ProductAddedFrom"
                                             className="inputLabel"
@@ -197,7 +197,7 @@ function DashboardProducts() {
                                         />
                                     </div>
                                     <br />
-                                    <div>
+                                    <div className="groupedData">
                                         <label
                                             htmlFor="ProductAddedTill"
                                             className="inputLabel"
@@ -227,7 +227,7 @@ function DashboardProducts() {
                         <table>
                             <tr>
                                 <th>IMAGE</th>
-                                <th>NAME</th>
+                                <th className="productName">NAME</th>
                                 <th>DESCRIPTIONS</th>
                                 <th>PRICE</th>
                                 <th>CREATED ON</th>
