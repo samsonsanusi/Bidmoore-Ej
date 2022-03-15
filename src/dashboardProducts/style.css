@@ -1,0 +1,200 @@
+/* aside Nav*/
+.DashboardCustomerContainer {
+    display: flex;
+}
+.DashboardCustomer_logo {
+    color: #5600e8;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.4rem;
+}
+.DashboardCustomer_style {
+    margin-left: -0.2rem;
+}
+.DashboardCustomer_aside {
+    display: block;
+    height: 100vh;
+    width: 228px;
+    background: #ffffff;
+    padding-top: 5rem;
+}
+.nav__icon {
+    width: 9px;
+}
+.DashboardCustomer_navPara {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    padding-left: 1.6rem;
+    color: #818080;
+}
+.DashboardCustomer__navContainer {
+    padding-top: 2rem;
+}
+.DashboardCustomer__nav {
+    display: flex;
+    margin-left: 2.1rem;
+    align-items: center;
+    padding-bottom: 0.8rem;
+}
+.DashboardCustomer__listItems {
+    list-style-type: none;
+}
+.DashboardCustomer__link {
+    text-decoration: none;
+}
+.DashboardCustomer_mainSection {
+    background: #f9f9f9;
+    width: 100%;
+}
+.DashboardCustomer-mainSectionBorderTop {
+    width: 90%;
+    background: #e5e5e5;
+    height: 0.1rem;
+    margin-top: 4.2rem;
+}
+.DashboardCustomerCard {
+    width: 61.5rem;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+.DashboardCustomerCard__content {
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.DashboardCustomerCard__input {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 155px;
+    margin-top: 20px;
+}
+.DashboardCustomerCard_topButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.DashboardCustomerCard_header {
+    font-family: sans-serif;
+    color: #3a3a3a;
+    font-size: 15px;
+}
+.add {
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    padding: 1px 3px 2px 3px;
+    margin-right: 10px;
+}
+.DashboardCustomer__addMoreBtn {
+    background: #5600e8;
+    color: #ffffff;
+    border-radius: 3px;
+    border: none;
+    padding: 11px 20px;
+    font-family: sans-serif;
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+.DashboardCustomerCard__fiterPara {
+    font-family: sans-serif;
+    font-size: 12px;
+    margin-left: 22px;
+    color: #3a3a3a;
+}
+.inputLabel {
+    font-family: sans-serif;
+    color: #3a3a3a;
+    font-size: 10px;
+}
+.inputField {
+    font-family: sans-serif;
+    font-size: 10px;
+    border: 1px solid #c4c4c4;
+    padding: 7px 120px 7px 2px;
+    border-radius: 3px;
+    margin-top: 4px;
+}
+.DashboardCustomerCard__bottomButtons {
+    display: flex;
+    justify-content: right;
+    margin-right: 56px;
+    margin-top: 39px;
+}
+.DashboardCustomerCard__lightBtn {
+    background: #ffffff;
+    font-family: sans-serif;
+    font-size: 10px;
+    color: #3a3a3a;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+    padding: 8px 15px 8px 13px;
+}
+.DashboardCustomerCard__lightBtn:hover {
+    color: #5600e8;
+    border: 1px solid #5600e8cc;
+}
+.DashboardCustomerCard__coloredBtn {
+    background: #5600e8;
+    font-family: sans-serif;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 3px;
+    border: none;
+    padding: 8px 16px 8px 16px;
+    margin-left: 1.3rem;
+}
+.DashboardCustomerCard__coloredBtn:hover {
+    background: #5600e8cc;
+}
+.ProductInfoCard {
+    width: 61.5rem;
+    margin: 0 auto;
+    margin-top: 4rem;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+}
+table {
+    width: 100%;
+}
+.auctionImage {
+    width: 40px;
+}
+.productAuction {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+table,
+th,
+td {
+    border-bottom: 1px solid #bab6b6;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 25px;
+    text-align: left;
+}
+th {
+    font-family: sans-serif;
+    font-size: 10px;
+    color: #3a3a3a;
+    font-weight: 800;
+}
+td {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #3a3a3a;
+}
+.auctionEdit {
+    padding: 8px 19px 8px 19px;
+}
+.auctionDelete {
+    background: #e85500;
+}
+.auctionDelete:hover {
+    background: #e85500b8;
+}

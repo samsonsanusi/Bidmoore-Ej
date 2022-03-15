@@ -1,12 +1,21 @@
 @font-face {
-    font-family: "Object Sans";
-    src: url("../font/ObjectSans-Regular.otf") format("otf2");
+    font-family: "ObjectSans";
+    src: url("../font/ObjectSans-Regular.otf");
+    font-style: bold;
+    font-size: 600;
 }
 @font-face {
     font-family: "ObjectSans-HeavySlanted";
-    src: url("../font/ObjectSans-HeavySlanted.otf") format("otf2");
+    src: url("../font/ObjectSans-HeavySlanted.otf");
 }
 @font-face {
     font-family: "ObjectSans-Slanted";
-    src: url("../font/ObjectSans-Slanted.otf") format("otf2");
+    src: url("../font/ObjectSans-Slanted.otf");
+}
+
+html {
+    font-size: 16px;
+}
+body {
+    font-family: "object-sans", sans-serif;
 }
