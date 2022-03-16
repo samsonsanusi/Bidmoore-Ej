@@ -227,89 +227,195 @@ function DashboardCustomers() {
                         <table className="table2">
                             <colgroup></colgroup>
                             <tr>
-                                <th>USERNAME</th>
-                                <th>PHONE NUMBER</th>
-                                <th>SUBSCRIPTIONS</th>
-                                <th>AUCTION BIDS</th>
-                                <th>BIDMOORE COINS</th>
-                                <th>STATUS</th>
-                                <th>ACCOUNT STATUS</th>
-                                <th>REGISTERED ON</th>
-                                <th>LAST LOGIN ON</th>
+                                <th className="tableHead">USERNAME</th>
+                                <th className="tableHead">PHONE NUMBER</th>
+                                <th className="tableHead">SUBSCRIPTIONS</th>
+                                <th className="tableHead">AUCTION BIDS</th>
+                                <th className="tableHead">BIDMOORE COINS</th>
+                                <th className="tableHead">STATUS</th>
+                                <th className="tableHead">ACCOUNT STATUS</th>
+                                <th className="tableHead">REGISTERED ON</th>
+                                <th className="tableHead">LAST LOGIN ON</th>
                             </tr>
                             <tr>
-                                <td>
-                                    <div>
-                                        <div className="auctionImage"></div>
+                                <td className="tableData">
+                                    <div className="auctionImage">
+                                        <div className="customerAvartar"></div>
                                         Tochi
                                     </div>
                                 </td>
-                                <td>+2348145638291</td>
-                                <td>
+                                <td className="tableData">+2348145638291</td>
+                                <td className="tableData">
                                     Count: 18 <br />
                                     Worth: ₦4,400.00
                                 </td>
-                                <td>
+                                <td className="tableData">
                                     Count: 18 <br />
                                     Worth: ₦4,400.00
                                 </td>
-                                <td>
+                                <td className="tableData">
                                     Balance: 0 <br />
                                     Worth: ₦0.00
                                 </td>
-                                <td>
-                                    <div>
-                                        <div></div>
+                                <td className="tableData">
+                                    <div className="verification">
+                                        <div className="verifcationDot"></div>
                                         Verified
                                     </div>
                                 </td>
-                                <td>Active</td>
-                                <td>Jul 6, 2021, 9:17 AM</td>
-                                <td>Jan 1, 2022, 9:17 AM</td>
+                                <td className="tableData">
+                                    <p className="active__background">ACTIVE</p>
+                                </td>
+                                <td className="tableData">
+                                    Jul 6, 2021, 9:17 AM
+                                </td>
+                                <td className="tableData">
+                                    Jan 1, 2022, 9:17 AM
+                                </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div className="auctionImage"></div>
+                                <td className="tableData">
+                                    <div className="auctionImage">
+                                        <div className="customerAvartar"></div>
+                                        Tochi
+                                    </div>
                                 </td>
-                                <td>Play Station 5</td>
-                                <td>Play Station 5</td>
-                                <td>₦45000</td>
-                                <td>Jul 6, 2021, 9:17 AM</td>
-                                <td>Jan 1, 2022, 9:17 AM</td>
-                                <td></td>
+                                <td className="tableData">+2348145638291</td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Balance: 0 <br />
+                                    Worth: ₦0.00
+                                </td>
+                                <td className="tableData">
+                                    <div className="verification">
+                                        <div className="verifcationDot"></div>
+                                        Verified
+                                    </div>
+                                </td>
+                                <td className="tableData">
+                                    <p className="active__background">ACTIVE</p>
+                                </td>
+                                <td className="tableData">
+                                    Jul 6, 2021, 9:17 AM
+                                </td>
+                                <td className="tableData">
+                                    Jan 1, 2022, 9:17 AM
+                                </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div className="auctionImage"></div>
+                                <td className="tableData">
+                                    <div className="auctionImage">
+                                        <div className="customerAvartar"></div>
+                                        Tochi
+                                    </div>
                                 </td>
-                                <td>Play Station 5</td>
-                                <td>Play Station 5</td>
-                                <td>₦45000</td>
-                                <td>Jul 6, 2021, 9:17 AM</td>
-                                <td>Jan 1, 2022, 9:17 AM</td>
-                                <td></td>
+                                <td className="tableData">+2348145638291</td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Balance: 0 <br />
+                                    Worth: ₦0.00
+                                </td>
+                                <td className="tableData">
+                                    <div className="verification">
+                                        <div className="verifcationDot"></div>
+                                        Verified
+                                    </div>
+                                </td>
+                                <td className="tableData">
+                                    <p className="active__background">ACTIVE</p>
+                                </td>
+                                <td className="tableData">
+                                    Jul 6, 2021, 9:17 AM
+                                </td>
+                                <td className="tableData">
+                                    Jan 1, 2022, 9:17 AM
+                                </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div className="auctionImage"></div>
+                                <td className="tableData">
+                                    <div className="auctionImage">
+                                        <div className="customerAvartar"></div>
+                                        Tochi
+                                    </div>
                                 </td>
-                                <td>Play Station 5</td>
-                                <td>Play Station 5</td>
-                                <td>₦45000</td>
-                                <td>Jul 6, 2021, 9:17 AM</td>
-                                <td>Jan 1, 2022, 9:17 AM</td>
-                                <td></td>
+                                <td className="tableData">+2348145638291</td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Balance: 0 <br />
+                                    Worth: ₦0.00
+                                </td>
+                                <td className="tableData">
+                                    <div className="verification">
+                                        <div className="verifcationDot"></div>
+                                        Verified
+                                    </div>
+                                </td>
+                                <td className="tableData">
+                                    <p className="active__background">ACTIVE</p>
+                                </td>
+                                <td className="tableData">
+                                    Jul 6, 2021, 9:17 AM
+                                </td>
+                                <td className="tableData">
+                                    Jan 1, 2022, 9:17 AM
+                                </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div className="auctionImage"></div>
+                                <td className="tableData">
+                                    <div className="auctionImage">
+                                        <div className="customerAvartar"></div>
+                                        Tochi
+                                    </div>
                                 </td>
-                                <td>Play Station 5</td>
-                                <td>Play Station 5</td>
-                                <td>₦45000</td>
-                                <td>Jul 6, 2021, 9:17 AM</td>
-                                <td>Jan 1, 2022, 9:17 AM</td>
-                                <td></td>
+                                <td className="tableData">+2348145638291</td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Count: 18 <br />
+                                    Worth: ₦4,400.00
+                                </td>
+                                <td className="tableData">
+                                    Balance: 0 <br />
+                                    Worth: ₦0.00
+                                </td>
+                                <td className="tableData">
+                                    <div className="verification">
+                                        <div className="verifcationDot"></div>
+                                        Verified
+                                    </div>
+                                </td>
+                                <td className="tableData">
+                                    <p className="active__background">ACTIVE</p>
+                                </td>
+                                <td className="tableData">
+                                    Jul 6, 2021, 9:17 AM
+                                </td>
+                                <td className="tableData">
+                                    Jan 1, 2022, 9:17 AM
+                                </td>
                             </tr>
                         </table>
                     </section>
