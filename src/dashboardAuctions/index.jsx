@@ -6,8 +6,6 @@ import auction_icon from "../icons/Dashboard/auction_icon.svg";
 import sold_out_auction from "../icons/Dashboard/sold_out_auction.svg";
 import wallet_transaction from "../icons/Dashboard/wallet_transaction.svg";
 import logout from "../icons/Dashboard/logout.svg";
-import iPhone_13_Pro from "../icons/Dashboard/iPhone_13_Pro.png";
-import Ps5 from "../icons/Dashboard/Ps5.png";
 
 function DashboardAuctions() {
     return (
