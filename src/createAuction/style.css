@@ -1,0 +1,59 @@
+.Creation {
+    background: #1e0647ad;
+    height: 867px;
+    padding-top: 130px;
+}
+.AuctionForm {
+    background: #ffff;
+    width: 443px;
+    height: 582px;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+.CancelAuction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+label {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #3a3a3a;
+}
+.CreateAuctionContainer {
+    padding: 0 29px;
+}
+.inputHolder {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+.auctionDate {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.auctionStart {
+    width: 172px;
+    padding: 7px 0;
+}
+.auctionEnd {
+    width: 172px;
+    padding: 7px 0;
+}
+.auctionInput {
+    width: 386px;
+    padding: 10px 0;
+    font-family: sans-serif;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+.AuctionSubmit {
+    width: 386px;
+    padding: 10px 0;
+    border-radius: 3px;
+    background: #e85500;
+    color: #ffff;
+    border: none;
+}

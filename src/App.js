@@ -5,6 +5,7 @@ import SignUp from "./signUp";
 import DashboardProducts from "./dashboardProducts";
 import DashboardCustomers from "./dashboardCustomers";
 import DashboardAuctions from "./dashboardAuctions";
+import CreateAuction from "./createAuction";
 import { Route, Routes } from "react-router-dom";
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     path="dashboardAuctions"
                     element={<DashboardAuctions />}
                 />
+                <Route path="createAuction" element={<CreateAuction />} />
             </Routes>
         </div>
     );
