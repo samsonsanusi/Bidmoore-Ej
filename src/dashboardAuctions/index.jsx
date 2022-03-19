@@ -149,7 +149,7 @@ function DashboardAuctions() {
                                         </label>
                                         <br />
                                         <input
-                                            type="text"
+                                            type="date"
                                             placeholder="Pick start date"
                                             className="auction__info"
                                         />
@@ -164,26 +164,13 @@ function DashboardAuctions() {
                                         </label>
                                         <br />
                                         <input
-                                            type="number"
+                                            type="date"
                                             placeholder="Enter start date"
                                             className="auction__info"
                                         />
                                     </div>
                                     <br />
-                                    <div className="groupedData">
-                                        <label
-                                            htmlFor="auctionForm"
-                                            className="inputLabel"
-                                        >
-                                            Auction Type
-                                        </label>
-                                        <br />
-                                        <input
-                                            type="text"
-                                            placeholder="All"
-                                            className="auction__info"
-                                        />
-                                    </div>
+
                                     <div className="groupedData">
                                         <label
                                             htmlFor="auctionForm"
@@ -193,7 +180,7 @@ function DashboardAuctions() {
                                         </label>
                                         <br />
                                         <input
-                                            type="text"
+                                            type="date"
                                             placeholder="Pick live date"
                                             className="auction__info"
                                         />
@@ -206,27 +193,17 @@ function DashboardAuctions() {
                                             Auction Status
                                         </label>
                                         <br />
-                                        <input
-                                            type="text"
-                                            placeholder="All"
+                                        <select
+                                            name="auctionType"
                                             className="auction__info"
-                                        />
+                                        >
+                                            <option>Going Live</option>
+                                            <option>Closed</option>
+                                            <option>Uppcoming</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div className="groupedData">
-                                    <label
-                                        htmlFor="auctionForm"
-                                        className="inputLabel"
-                                    >
-                                        Auction Visibility
-                                    </label>
-                                    <br />
-                                    <input
-                                        type="text"
-                                        placeholder="All"
-                                        className="auction__info"
-                                    />
-                                </div>
+
                                 <div className="AuctionButtons">
                                     <button className="auction_clearButton">
                                         Clear all
