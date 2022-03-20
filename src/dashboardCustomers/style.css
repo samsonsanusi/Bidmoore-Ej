@@ -1,137 +1,110 @@
-/* aside Nav*/
-.DashboardCustomerContainer {
-    display: flex;
-}
-.DashboardCustomer_logo {
+.customerLogo {
     color: #5600e8;
     text-align: center;
     font-family: sans-serif;
     font-size: 1.4rem;
 }
-.DashboardCustomer_style {
+.customerStyle {
     margin-left: -0.2rem;
 }
-.DashboardCustomer_aside {
+.CustomerContainer {
+    display: flex;
+    background: #f9f9f9;
+}
+.customerLink {
+    text-decoration: none;
+}
+.CustomerAside {
     display: block;
     height: 100vh;
     width: 228px;
-    background: #ffffff;
     padding-top: 5rem;
 }
-.nav__icon {
+.nav__iconAside {
     width: 9px;
 }
-.productName {
-    width: 282px;
-}
-.DashboardCustomer_navPara {
+.customer__navPara {
     font-family: sans-serif;
     font-size: 0.8rem;
     padding-left: 1.6rem;
     color: #818080;
 }
-.DashboardCustomer__navContainer {
+.customer__navContainer {
     padding-top: 2rem;
 }
-.DashboardCustomer__nav {
+.customerNav__icon {
     display: flex;
     margin-left: 2.1rem;
     align-items: center;
     padding-bottom: 0.8rem;
 }
-.DashboardCustomer__listItems {
+.customerList__items {
     list-style-type: none;
 }
-.DashboardCustomer__link {
-    text-decoration: none;
-}
-.DashboardCustomer_mainSection {
-    background: #f9f9f9;
-    width: 100%;
-}
-.DashboardCustomer-mainSectionBorderTop {
-    width: 90%;
+.customerBordertop {
+    width: 99%;
     background: #e5e5e5;
     height: 0.1rem;
     margin-top: 4.2rem;
 }
-.DashboardCustomerCard {
-    width: 70.5rem;
+.inputWrapper {
+    width: 170px;
+    margin-left: 22px;
+}
+.CustomerCard {
+    width: 72.5rem;
     margin: 0 auto;
     margin-top: 4rem;
 }
-.DashboardCustomerCard__content {
+.customerSearch {
     background: #ffffff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
-.DashboardCustomerCard__input {
+.customerDataInput {
     display: flex;
     justify-content: space-evenly;
-    margin-right: 155px;
+    margin-right: 122px;
     margin-top: 20px;
 }
-.DashboardCustomerCard_topButtons {
+/* .customerTop__buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.DashboardCustomerCard_header {
+} */
+.customerMain__header {
     font-family: sans-serif;
     color: #3a3a3a;
     font-size: 15px;
 }
-.add {
-    border: 1px solid #ffffff;
-    border-radius: 50%;
-    padding: 1px 4px 2px 4px;
-    margin-right: 10px;
-}
-.DashboardCustomer__addMoreBtn {
-    background: #5600e8;
-    color: #ffffff;
-    border-radius: 3px;
-    border: none;
-    padding: 11px 20px;
-    font-family: sans-serif;
-    font-size: 10px;
-    margin-bottom: 4px;
-}
-.DashboardCustomerCard__fiterPara {
+.customerFilter__Para {
     font-family: sans-serif;
     font-size: 12px;
     margin-left: 22px;
     color: #3a3a3a;
 }
-.inputLabel {
+.inputLabel2 {
     font-family: sans-serif;
     color: #3a3a3a;
     font-size: 10px;
 }
-.inputField {
+.customerInput_field {
     font-family: sans-serif;
     font-size: 10px;
     border: 1px solid #c4c4c4;
-    padding: 7px 120px 7px 2px;
+    padding: 7px 49px 7px 2px;
     border-radius: 3px;
     margin-top: 4px;
-    width: 296px;
 }
-.groupedData {
-    margin-left: 10px;
-}
-.groupedData2 {
-    margin-left: 12px;
-}
-.DashboardCustomerCard__bottomButtons {
+.customers__bottomButtons {
     display: flex;
     justify-content: right;
-    margin-right: 56px;
+    margin-right: 39px;
     margin-top: 39px;
 }
-.DashboardCustomerCard__lightBtn {
+.customer__lightBtn {
     background: #ffffff;
     font-family: sans-serif;
     font-size: 10px;
@@ -140,11 +113,11 @@
     border: 1px solid #c4c4c4;
     padding: 8px 15px 8px 13px;
 }
-.DashboardCustomerCard__lightBtn:hover {
+.customer__lightBtn:hover {
     color: #5600e8;
     border: 1px solid #5600e8cc;
 }
-.DashboardCustomerCard__coloredBtn {
+.customer__coloredBtn {
     background: #5600e8;
     font-family: sans-serif;
     font-size: 10px;
@@ -154,38 +127,29 @@
     padding: 8px 16px 8px 16px;
     margin-left: 1.3rem;
 }
-.DashboardCustomerCard__coloredBtn:hover {
+.customer__coloredBtn:hover {
     background: #5600e8cc;
 }
-.ProductInfoCard {
-    width: 70.5rem;
+.CustomerCardInfo {
+    width: 72.5rem;
     margin: 0 auto;
     margin-top: 4rem;
     background: #ffffff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
 }
-table {
+.table2 {
     width: 100%;
 }
-.auctionImage {
-    width: 40px;
-}
-.productAuction {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-table,
+.table2,
 th,
 td {
     border-bottom: 1px solid #bab6b6;
     border-collapse: collapse;
 }
-
-th,
-td {
-    padding: 25px;
+.tableHead,
+.tableData {
+    padding: 29px 13px;
     text-align: left;
 }
 th {
@@ -199,12 +163,38 @@ td {
     font-size: 12px;
     color: #3a3a3a;
 }
-.auctionEdit {
-    padding: 8px 19px 8px 19px;
+.auctionImage {
+    display: flex;
+    align-items: center;
 }
-.auctionDelete {
-    background: #e85500;
+.customerAvartar {
+    background: #c4c4c4;
+    width: 32px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 7px;
+    padding-left: 26px;
+    padding-right: 3px;
 }
-.auctionDelete:hover {
-    background: #e85500b8;
+
+.verifcationDot {
+    width: 4px;
+    height: 4px;
+    background: #3a3a3a;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+.verification {
+    display: flex;
+    align-items: center;
+}
+.active__background {
+    background: #c4c4c461;
+    width: 56px;
+    height: 22px;
+    padding-top: 4px;
+    border-radius: 5px;
+    padding-left: 5px;
+    font-family: sans-serif;
+    font-size: 12px;
 }

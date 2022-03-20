@@ -3,8 +3,11 @@ import Login from "./login";
 import ForgotPassword from "./forgotPassword";
 import SignUp from "./signUp";
 import DashboardProducts from "./dashboardProducts";
-import { Routes, Route } from "react-router-dom";
-
+import DashboardCustomers from "./dashboardCustomers";
+import DashboardAuctions from "./dashboardAuctions";
+import CreateAuction from "./createAuction";
+import LandingPage from "./landingPage";
+import { Route, Routes } from "react-router-dom";
 function App() {
     return (
         <div className="App">
@@ -15,7 +18,17 @@ function App() {
                 <Route
                     path="dashboardProducts"
                     element={<DashboardProducts />}
-                ></Route>
+                />
+                <Route
+                    path="dashboardCustomers"
+                    element={<DashboardCustomers />}
+                />
+                <Route
+                    path="dashboardAuctions"
+                    element={<DashboardAuctions />}
+                />
+                <Route path="createAuction" element={<CreateAuction />} />
+                <Route path="landingPage" element={<LandingPage />} />
             </Routes>
         </div>
     );
