@@ -6,6 +6,7 @@ import DashboardProducts from "./dashboardProducts";
 import DashboardCustomers from "./dashboardCustomers";
 import DashboardAuctions from "./dashboardAuctions";
 import CreateAuction from "./createAuction";
+import LandingPage from "./landingPage";
 import { Route, Routes } from "react-router-dom";
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                     element={<DashboardAuctions />}
                 />
                 <Route path="createAuction" element={<CreateAuction />} />
+                <Route path="landingPage" element={<LandingPage />} />
             </Routes>
         </div>
     );
