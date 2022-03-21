@@ -7,6 +7,7 @@ import DashboardCustomers from "./dashboardCustomers";
 import DashboardAuctions from "./dashboardAuctions";
 import CreateAuction from "./createAuction";
 import LandingPage from "./landingPage";
+import AdminLogin from "./adminLogin";
 import { Route, Routes } from "react-router-dom";
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                 />
                 <Route path="createAuction" element={<CreateAuction />} />
                 <Route path="landingPage" element={<LandingPage />} />
+                <Route path="adminLogin" element={<AdminLogin />} />
             </Routes>
         </div>
     );
