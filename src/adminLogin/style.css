@@ -1,0 +1,70 @@
+.AdminData {
+    background: #ffffff;
+}
+.logo {
+    color: #5600e8;
+    padding-top: 36px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 24px;
+}
+.logoSpan {
+    margin-left: -3px;
+}
+.admin-dataInfo {
+    background: #ffffff;
+    width: 30rem;
+    height: 23rem;
+    margin: 12rem auto;
+    box-shadow: 0px 8px 39px 0 rgb(0 0 0 / 0%), 0 6px 20px 0 rgb(0 0 0 / 13%);
+    border-radius: 2px;
+}
+#adminUsername {
+    font-family: sans-serif;
+    font-size: 11px;
+    font-family: sans-serif;
+    font-size: 11px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    padding-right: 280px;
+    padding-left: 9px;
+    margin-top: 3px;
+    border: 1px solid #bab6b6;
+    border-radius: 3px;
+}
+.adminLabel {
+    font-family: sans-serif;
+    font-size: 13px;
+}
+.form__inner {
+    margin-left: 37px;
+    padding-top: 19px;
+}
+#adminPassword {
+    font-family: sans-serif;
+    font-size: 11px;
+    font-family: sans-serif;
+    font-size: 11px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    padding-right: 280px;
+    padding-left: 9px;
+    margin-top: 3px;
+    border: 1px solid #bab6b6;
+    border-radius: 3px;
+}
+.PasswordSection {
+    margin-top: 20px;
+}
+.AdminBtn {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    width: 25.4rem;
+    font-family: sans-serif;
+    margin-top: 13px;
+    font-size: 11px;
+    background: #e85500;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+}
