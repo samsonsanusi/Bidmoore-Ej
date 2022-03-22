@@ -11,7 +11,6 @@ import AdminLogin from "./adminLogin";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-<<<<<<< HEAD
   return (
     <div className="App">
       <Routes>
@@ -23,35 +22,10 @@ function App() {
         <Route path="/dashboardAuctions" element={<DashboardAuctions />} />
         <Route path="/createAuction" element={<CreateAuction />} />
         <Route path="/landingPage" element={<LandingPage />} />
+        <Route path="/adminLogin" element={<AdminLogin />} />
       </Routes>
     </div>
   );
-=======
-    return (
-        <div className="App">
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/forgotPassword" element={<ForgotPassword />} />
-                <Route path="signUp" element={<SignUp />} />
-                <Route
-                    path="dashboardProducts"
-                    element={<DashboardProducts />}
-                />
-                <Route
-                    path="dashboardCustomers"
-                    element={<DashboardCustomers />}
-                />
-                <Route
-                    path="dashboardAuctions"
-                    element={<DashboardAuctions />}
-                />
-                <Route path="createAuction" element={<CreateAuction />} />
-                <Route path="landingPage" element={<LandingPage />} />
-                <Route path="adminLogin" element={<AdminLogin />} />
-            </Routes>
-        </div>
-    );
->>>>>>> feature/adminSignUp/samson
 }
 
 export default App;

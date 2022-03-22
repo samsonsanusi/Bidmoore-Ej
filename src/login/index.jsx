@@ -8,10 +8,6 @@ function Login() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    console.log(process.env.REACT_APP_TITLE);
-  }, []);
-
   return (
     <div className="container">
       <div className="login">

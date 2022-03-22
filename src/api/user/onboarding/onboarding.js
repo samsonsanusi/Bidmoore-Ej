@@ -1,8 +1,6 @@
 import axios from "axios";
 const baseURL = process.env.REACT_APP_BASE_URL;
 
-export let token;
-
 export const signUpUser = async (user) => {
   try {
     const username = user.username;
@@ -17,6 +15,7 @@ export const signUpUser = async (user) => {
 
     console.log(data);
   } catch (error) {
+    alert(error.response.data.message);
     console.log(error.response);
   }
 };
@@ -36,9 +35,8 @@ export const loginUser = async (user, navigate) => {
     }
 
     console.log(data);
-
-    token = data.data[0].token;
   } catch (error) {
+    alert(error.response.data.message);
     console.log(error.response);
   }
 };
