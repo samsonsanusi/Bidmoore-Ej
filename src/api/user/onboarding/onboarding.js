@@ -13,7 +13,8 @@ export const signUpUser = async (user) => {
       password,
     });
 
-    console.log(data);
+    const token = data.data[0].token;
+    sessionStorage.setItem("token", token);
   } catch (error) {
     alert(error.response.data.message);
     console.log(error.response);
@@ -34,7 +35,8 @@ export const loginUser = async (user, navigate) => {
       navigate("/landingPage");
     }
 
-    console.log(data);
+    const token = data.data[0].token;
+    sessionStorage.setItem("token", token);
   } catch (error) {
     alert(error.response.data.message);
     console.log(error.response);

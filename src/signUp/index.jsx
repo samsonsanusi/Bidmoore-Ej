@@ -68,7 +68,7 @@ function SignUp() {
                         phoneNumber,
                         password,
                       };
-                      console.log("data", data);
+
                       signUpUser(data);
                     }}
                     className="signUpBtn"

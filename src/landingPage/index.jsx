@@ -1,6 +1,7 @@
 import "./style.css";
 import iPhone13Pro from "../icons/Dashboard/iPhone13Pro.svg";
 import coin from "../icons/Dashboard/coin.svg";
+import { useEffect } from "react";
 
 function LandingPage() {
   return (
