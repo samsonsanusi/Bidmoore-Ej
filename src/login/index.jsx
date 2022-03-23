@@ -53,7 +53,7 @@ function Login() {
                       phoneNumber,
                       password,
                     };
-                    console.log(data);
+
                     loginUser(data, navigate);
                   }}
                   className="loginBtn"

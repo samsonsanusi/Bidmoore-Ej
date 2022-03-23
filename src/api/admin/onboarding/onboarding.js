@@ -7,7 +7,6 @@ export const signinAdmin = async (user, navigate) => {
   try {
     const email = user.email;
     const password = user.password;
-    console.log(user);
 
     const { data } = await axios.post(`${baseURL}/admin/signin`, {
       email,
@@ -17,10 +16,7 @@ export const signinAdmin = async (user, navigate) => {
     if (data.statusCode === 200) {
       navigate("/dashboardAuctions");
     }
-
-    console.log(data);
   } catch (error) {
-    console.log(error.response);
     alert(error.response.data.message);
   }
 };
