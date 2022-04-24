@@ -1,9 +1,41 @@
 import "./style.css";
+import { useContext } from "react";
 import iPhone13Pro from "../icons/Dashboard/iPhone13Pro.svg";
 import coin from "../icons/Dashboard/coin.svg";
+import io from "socket.io-client";
+import { Context } from "../context/context";
 import { useEffect } from "react";
 
 function LandingPage() {
+  const { authState } = useContext(Context);
+  const { token } = authState;
+  console.log("token", token);
+
+  useEffect(() => {
+    let socket = io.connect("wss://bidmoore-staging.herokuapp.com", {
+      autoConnect: false,
+      transports: ["websocket"],
+      auth: { token },
+    });
+
+    socket.on("connect", () => {
+      console.log("Connected");
+    });
+
+    socket.on("disconnect", (reason) => {
+      console.log(`Disconnected: ${reason}`);
+    });
+    socket.on("connect_error", (err) => {
+      console.log(err);
+      const { message } = err;
+      console.log(message);
+      socket.close();
+      window.location.href = "https://bidmoore-staging.web.app/";
+    });
+
+    socket.open();
+  }, [io]);
+
   return (
     <div>
       <header className="LandingpPageHeader">

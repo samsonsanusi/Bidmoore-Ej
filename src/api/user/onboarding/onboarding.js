@@ -16,7 +16,6 @@ export const signUpUser = async (user) => {
     const token = data.data[0].token;
 
     if (data.statusCode === 200) {
-      window.location.href = `https://bidmoore-app.web.app/${token}`;
     }
   } catch (error) {
     alert(error.response.data.message);
@@ -24,7 +23,7 @@ export const signUpUser = async (user) => {
   }
 };
 
-export const loginUser = async (user) => {
+export const loginUser = async (user, authDispatch, navigate) => {
   try {
     const phoneNumber = user.phoneNumber;
     const password = user.password;
@@ -36,8 +35,10 @@ export const loginUser = async (user) => {
 
     const token = data.data[0].token;
 
+    authDispatch({ type: "SUCCESS", payload: token });
+
     if (data.statusCode === 200) {
-      window.location.href = `https://bidmoore-app.web.app/${token}`;
+      navigate("/landingPage");
     }
   } catch (error) {
     alert(error.response.data.message);
