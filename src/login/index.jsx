@@ -1,12 +1,18 @@
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/user/onboarding/onboarding";
+import { Context } from "../context/context";
 
 function Login() {
   const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const { authDispatch } = useContext(Context);
+
+  // useEffect(() => {
+  //   authDispatch({ type: "SUCCESS", payload: "123" });
+  // }, []);
 
   return (
     <div className="container">
@@ -47,14 +53,15 @@ function Login() {
               />
               <div className="login--button">
                 <button
-                  onClick={(e) => {
+                  onClick={async (e) => {
                     e.preventDefault();
                     const data = {
                       phoneNumber,
                       password,
+                      authDispatch,
                     };
 
-                    loginUser(data, navigate);
+                    loginUser(data, authDispatch, navigate);
                   }}
                   className="loginBtn"
                 >
