@@ -1,5 +1,4 @@
 export const LoginReducer = (state, { type, payload }) => {
-  console.log("payload", payload);
   switch (type) {
     case "SUCCESS":
       return {
@@ -7,7 +6,8 @@ export const LoginReducer = (state, { type, payload }) => {
         loading: false,
         auth: true,
         error: "",
-        token: payload,
+        token: payload.token,
+        username: payload.username,
       };
 
     default:
