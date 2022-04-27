@@ -1,22 +1,66 @@
 import "./style.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import iPhone13Pro from "../icons/Dashboard/iPhone13Pro.svg";
 import coin from "../icons/Dashboard/coin.svg";
 import io from "socket.io-client";
 import { Context } from "../context/context";
 import { useEffect } from "react";
+import { getAuctions, topup } from "../api/auctions/auctions";
+import { ConsoleSqlOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+import Countdown, { zeroPad } from "react-countdown";
 
 function LandingPage() {
-  const { authState } = useContext(Context);
-  const { token } = authState;
-  console.log("token", token);
+  const { authState, auctionState, auctionDispatch } = useContext(Context);
+  const { token, username } = authState;
+  const navigate = useNavigate();
+
+  console.log("token", token, username);
+
+  let socket;
+  console.log("auction state", auctionState);
+
+  socket = io.connect("wss://bidmoore-staging.herokuapp.com", {
+    autoConnect: false,
+    transports: ["websocket"],
+    auth: { token },
+  });
+
+  const sendSub = (auctionId) => {
+    console.log("auctionId", auctionId);
+    console.log("socket", socket);
+    socket?.emit("sub:server", { auctionId });
+  };
+
+  const handleDate = (dateString) => {
+    const date = new Date(dateString);
+    const time = date.getTime();
+
+    return (
+      <Countdown
+        key={time}
+        date={time}
+        onComplete={() => {}}
+        renderer={({ hours, minutes, seconds, completed }) => {
+          const h = hours === 0 ? "" : `${zeroPad(hours)}h`;
+          const m = !h && minutes === 0 ? "" : `${zeroPad(minutes)}m`;
+
+          return (
+            <h6 className="float-left za-time za-blue">
+              {h}
+              {m}
+              {zeroPad(seconds)}s
+            </h6>
+          );
+        }}
+      />
+    );
+  };
 
   useEffect(() => {
-    let socket = io.connect("wss://bidmoore-staging.herokuapp.com", {
-      autoConnect: false,
-      transports: ["websocket"],
-      auth: { token },
-    });
+    if (!token) {
+      navigate("/", { replace: true });
+    }
 
     socket.on("connect", () => {
       console.log("Connected");
@@ -30,11 +74,95 @@ function LandingPage() {
       const { message } = err;
       console.log(message);
       socket.close();
-      window.location.href = "https://bidmoore-staging.web.app/";
     });
 
     socket.open();
-  }, [io]);
+
+    socket.on("bid", (message) => {
+      console.log("bid", message);
+      const updatedAuction = message.auction;
+      const updatedAuctionId = updatedAuction.auctionId;
+
+      const _liveAuctions = auctionState?.auctions?._liveAuctions;
+      const index = _liveAuctions.findIndex((auction) => {
+        console.log(auction.auctionId);
+        return auction.auctionId === updatedAuctionId;
+      });
+
+      _liveAuctions.splice(index, 1, updatedAuction);
+      console.log("just updated auction", _liveAuctions);
+      auctionDispatch({ type: "SET_AUCTIONS", payload: { _liveAuctions } });
+    });
+
+    socket.on("auctions-update", (message) => {
+      console.log("update:", message);
+      const _liveAuctions = message.liveAuctions;
+      auctionDispatch({ type: "SET_AUCTIONS", payload: { _liveAuctions } });
+    });
+
+    socket.on("bid-fail", (message) => {
+      // alert(message.message);
+      console.log(message);
+    });
+
+    socket.on("subscription", (message) => {
+      // updateSubAuction(message.auction);
+      console.log("subscription", message);
+    });
+
+    socket.on("sub-fail", (message) => {
+      alert(message.message);
+      console.log(message);
+    });
+    socket.on("sub-success", (message) => {});
+    socket.on("error", (err) => {
+      console.log("er", err);
+    });
+
+    socket.on("user-details", (details) => {
+      //  username = details.username;
+    });
+
+    return () => {
+      socket.close();
+    };
+  }, [socket]);
+
+  useEffect(async () => {
+    topup(token);
+    const _liveAuctions = await getAuctions();
+    auctionDispatch({ type: "SET_AUCTIONS", payload: { _liveAuctions } });
+  }, []);
+
+  const renderAuctionText = (status, subCharge) => {
+    if (status === "LIVE") {
+      return "Bid Now";
+    } else if (status === "CLOSED") {
+      return "Auction Ended";
+    } else {
+      return `Subscribe for ${subCharge}c`;
+    }
+  };
+
+  const sendBid = (auctionId) => {
+    socket.emit("bid:server", { auctionId });
+  };
+
+  const isSub = (sub) => {
+    const subRes = sub.includes(username);
+    return subRes;
+  };
+
+  const renderSubscriptionText = (status, sub) => {
+    if (status === "LIVE") {
+      const res = isSub(sub);
+      return "is Bidding";
+    } else if (status === "CLOSED") {
+      return "as won";
+    }
+  };
+
+  // send subscription
 
   return (
     <div>
@@ -115,310 +243,62 @@ function LandingPage() {
       </header>
       <section className="AuctionSection">
         <div className="cards">
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
+          {auctionState?.auctions?._liveAuctions?.map((auction, index) => {
+            return (
+              <div key={index} className="Auctioncard">
+                <div className="auctionHeader">
+                  <h5 className="auctionName">{auction.product.name}</h5>
+                  <p className="auctionPrice">
+                    ₦{auction.discountPrice} <del>₦{auction.product.price}</del>
+                  </p>
+                </div>
+                <div className="AuctionImage">
+                  <div className="auction_image">
+                    <img src={auction.product.image} className="auctionItem" />
+                  </div>
+                  <div className="subsinfo">
+                    <h6 className="subsCharge">
+                      5<img src={coin} className="coinCharge" />
+                      <span className="per">/</span>bid
+                    </h6>
 
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
+                    <h6 className="subsCharge">Up to 90%</h6>
+                  </div>
+                </div>
+                <div className="AuctionTime">
+                  <h5 className="time-Text">{auction.currentPrice}</h5>
+                  <h5 className="start__time">{handleDate(auction.endTime)}</h5>
+                </div>
 
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
+                <div className="currentSub">
+                  <h5 className="username">{auction?.lastBidder?.username}</h5>
+                  <p className="subStatus">
+                    {renderSubscriptionText(
+                      auction.status,
+                      auction.subscriptions
+                    )}
+                  </p>
+                </div>
 
-                <h6 className="subsCharge">Up to 90%</h6>
+                <button
+                  onClick={() => {
+                    const sub = auction.subscriptions;
+                    const issub = sub.includes(username);
+                    console.log("isSub", issub);
+                    console.log("sub", sub);
+                    if (issub) {
+                      sendBid(auction.auctionId);
+                    } else {
+                      sendSub(auction.auctionId);
+                    }
+                  }}
+                  className="sub_button"
+                >
+                  {renderAuctionText(auction.status, auction.subCharge)}
+                </button>
               </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-        </div>
-        <div className="cards">
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
-          <div className="Auctioncard">
-            <div className="auctionHeader">
-              <h5 className="auctionName">PlayStation 5</h5>
-              <p className="auctionPrice">
-                ₦4,500 <del>₦45,000</del>
-              </p>
-            </div>
-            <div className="AuctionImage">
-              <div className="auction_image">
-                <img src={iPhone13Pro} className="auctionItem" />
-              </div>
-              <div className="subsinfo">
-                <h6 className="subsCharge">
-                  5<img src={coin} className="coinCharge" />
-                  <span className="per">/</span>bid
-                </h6>
-
-                <h6 className="subsCharge">Up to 90%</h6>
-              </div>
-            </div>
-            <div className="AuctionTime">
-              <h5 className="time-Text">BIDDING STARTS</h5>
-              <h5 className="start__time">52h30m23s</h5>
-            </div>
-            <div className="currentSub">
-              <h5 className="username">lovebud</h5>
-              <p className="subStatus"> just subscribed</p>
-            </div>
-            <button className="sub_button">Subscribe for 10c</button>
-          </div>
+            );
+          })}
         </div>
       </section>
     </div>

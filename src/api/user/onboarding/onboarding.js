@@ -13,6 +13,8 @@ export const signUpUser = async (user) => {
       password,
     });
 
+    console.log(data.data);
+
     const token = data.data[0].token;
 
     if (data.statusCode === 200) {
@@ -33,9 +35,11 @@ export const loginUser = async (user, authDispatch, navigate) => {
       password,
     });
 
+  
     const token = data.data[0].token;
-
-    authDispatch({ type: "SUCCESS", payload: token });
+    const username = data.data[0]?.user.username;
+  
+    authDispatch({ type: "SUCCESS", payload: {token, username} });
 
     if (data.statusCode === 200) {
       navigate("/landingPage");
